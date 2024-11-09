@@ -15,9 +15,9 @@ import os
 from datetime import timedelta
 
 import django_heroku 
-django_heroku.settings(locals())
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+django_heroku.settings(locals())
 
 
 # Quick-start development settings - unsuitable for production
@@ -126,7 +126,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 import dj_database_url
 
 DATABASES = {
-    'default': dj_database_url.config(default='postgres://your_database_url'),
+    'default': dj_database_url.config(default='postgres://ubn22vmgkgt489:p5824fa7ece7b65e49a4b2643488d5113e3fd4d163effa78107482e4b241960e3@c9uss87s9bdb8n.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/dcjrshoubluni'),
 }
 
 # Password validation
