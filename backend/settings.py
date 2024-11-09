@@ -122,13 +122,11 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-import dj-database-url
-DATABASES = {
-    'default': dj_database_url.config(
-        default='postgres://ubn22vmgkgt489:p5824fa7ece7b65e49a4b2643488d5113e3fd4d163effa78107482e4b241960e3@c9uss87s9bdb8n.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/dcjrshoubluni'
-    )
-}
+import dj_database_url
 
+DATABASES = {
+    'default': dj_database_url.config(default='postgres://your_database_url'),
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
