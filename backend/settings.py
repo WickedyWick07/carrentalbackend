@@ -22,12 +22,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%axv9rzfho^lt6y-^w0hyk-+8q!l_6+^@-$7&(af!69aw-vaao'
-
+SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['https://carrentalbackend-27ee820fd956.herokuapp.com/']
+ALLOWED_HOSTS = ['carrentalbackend-27ee820fd956.herokuapp.com/']
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
@@ -80,6 +79,7 @@ SITE_ID = 1
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Move here
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -87,8 +87,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # Add this line
 ]
+
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'  # Adjust based on your requirements
 ACCOUNT_AUTHENTICATION_METHOD = 'username'
@@ -124,7 +124,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 import dj_database_url
 
 DATABASES = {
-    'default': dj_database_url.config(default='postgres://ubn22vmgkgt489:p5824fa7ece7b65e49a4b2643488d5113e3fd4d163effa78107482e4b241960e3@c9uss87s9bdb8n.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/dcjrshoubluni'),
+    'default': dj_database_url.config(default=os.environ.get("DATABASE_URL")),
 }
 
 # Password validation
@@ -169,4 +169,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "https://carrentalfrontend.vercel.app",  # Vercel frontend
+    "http://localhost:5173"  # Local development
+]
+CORS_ALLOW_CREDENTIALS = True
+
