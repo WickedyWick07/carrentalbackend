@@ -30,6 +30,7 @@ SECRET_KEY = 'django-insecure-%axv9rzfho^lt6y-^w0hyk-+8q!l_6+^@-$7&(af!69aw-vaao
 DEBUG = True
 
 ALLOWED_HOSTS = []
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 # Application definition
