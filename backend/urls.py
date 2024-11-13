@@ -10,7 +10,6 @@ from users.views import login_view, register_view, get_current_user, get_user_by
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('cars.urls')),
-    path('api/', include('users.urls')),
     path('/api/user/', get_current_user, name='get-user'),
     path('/api/auth/register/', register_view, name='register'),
     path('/api/auth/login/', login_view, name='login'),
