@@ -27,7 +27,7 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["carrentalbackend-0zuw.onrender.com", "carrentalfrontend.vercel.app"]
+ALLOWED_HOSTS = ['127.0.0.1', "carrentalbackend-0zuw.onrender.com", "carrentalfrontend.vercel.app"]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
