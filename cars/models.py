@@ -10,4 +10,11 @@ class Car(models.Model):
 
     def __str__(self):
         return f"{self.make} {self.model} {self.year}"
-    
+    #add direct image url function
+    #https://carrentalbackend-0zuw.onrender.com/media/https%3A/xecpdpctpkqjzukczgoe.supabase.co/storage/v1/object/public/car-images/2023-Lexus-RX_KL_10.webp fix this url
+    # run from local server to test the functionality of the images
+    @property
+    def full_image_url(self):
+        if self.image:
+            return f"https://xecpdpctpkqjzukczgoe.supabase.co/storage/v1/object/public/car-images/{self.image.name}"
+        return None
