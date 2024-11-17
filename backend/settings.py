@@ -27,7 +27,7 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', "carrentalbackend-0zuw.onrender.com", "carrentalfrontend.vercel.app"]
+ALLOWED_HOSTS = ['127.0.0.1', "carrentalbackend-0zuw.onrender.com", "carrentalfrontend.vercel.app", "speedyrentals.vercel.app"]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
@@ -174,6 +174,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
+    "https://speedyrentals.vercel.app",
     "https://carrentalfrontend.vercel.app",  # Vercel frontend
     "http://localhost:5173"  # Local development
 ]
