@@ -16,5 +16,7 @@ class Car(models.Model):
     @property
     def full_image_url(self):
         if self.image:
-            return f"https://xecpdpctpkqjzukczgoe.supabase.co/storage/v1/object/public/car-images/{self.image.name}"
+            # Get the file path without any prepended base URL
+            file_path = self.image.name.replace('cars/images/', '')  # Remove any unwanted prefix
+            return f"https://xecpdpctpkqjzukczgoe.supabase.co/storage/v1/object/public/car-images/{file_path}"
         return None
